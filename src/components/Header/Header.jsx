@@ -9,7 +9,7 @@ const Header = () => {
         <p className='col-md-8 fs-4'>
           Discover the best food from around the world, delivered to your doorstep.
         </p>
-        <Link to='/explore' className='btn btn-primary btn-lg' >Explore</Link>
+        <Link to='/explore' className='btn btn-primary ' >Explore</Link>
       </div>
     </div>
   )
