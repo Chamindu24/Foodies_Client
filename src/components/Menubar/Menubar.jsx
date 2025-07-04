@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Menubar.css';
 import { assets } from '../../assets/assets';
 import { Link } from 'react-router-dom';
+import { StoreContext } from '../../context/StoreContex';
 
 const Menubar = () => {
+      const { quantity} = useContext(StoreContext);
+      const uniqueItemsInCart = Object.values(quantity).filter(qty => qty > 0).length;
+  
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary shadow-sm">
       <div className="container">
         {/* Logo */}
-        <img src={assets.logo} alt="Logo" className="mx-4" height={40} width={40} />
-
+        <Link to={`/`}><img src={assets.logo} alt="Logo" className="mx-4" height={40} width={40} />
+        </Link>
         {/* Toggle button for small screens */}
         <button
           className="navbar-toggler"
@@ -46,12 +50,12 @@ const Menubar = () => {
 
           {/* Right section: cart and buttons */}
           <div className="d-flex align-items-center gap-4 menubar-right">
-            <div className="position-relative">
+            <Link to={`/cart`}><div className="position-relative">
               <img src={assets.cart} alt="Cart" height={32} width={32} />
               <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning">
-                5
+                {uniqueItemsInCart}
               </span>
-            </div>
+            </div></Link>
 
             <button className="btn btn-outline-primary">Login</button>
             <button className="btn btn-outline-success">Register</button>

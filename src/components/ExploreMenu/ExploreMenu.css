@@ -31,3 +31,7 @@
     background-color: #232121;
     border: none;
 }
+.explore-menu-list-item .active{
+    border: 5px solid tomato;
+    padding: 2px;
+}
