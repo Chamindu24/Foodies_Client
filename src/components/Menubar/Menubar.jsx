@@ -1,12 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import './Menubar.css';
 import { assets } from '../../assets/assets';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { StoreContext } from '../../context/StoreContex';
 
 const Menubar = () => {
+  const [active, setActive] = useState('home');
       const { quantity} = useContext(StoreContext);
       const uniqueItemsInCart = Object.values(quantity).filter(qty => qty > 0).length;
+  const navigate = useNavigate();
   
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary shadow-sm">
@@ -32,17 +34,17 @@ const Menubar = () => {
           {/* Left nav links */}
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to={ '/' }>
+              <Link className={active=== 'home'? "nav-link fw-bold active": "nav-link"} aria-current="page" to={ '/' } onClick={() => setActive('home')}>
                 Home
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to={ '/explore' }>
+              <Link className={active=== 'explore'? "nav-link fw-bold active": "nav-link"} to={ '/explore' } onClick={() => setActive('explore')}>
                 Explore
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to={ '/contact' }>
+              <Link className={active=== 'contact'? "nav-link fw-bold active": "nav-link"} to={ '/contact' } onClick={() => setActive('contact')}>
                 Contact Us
               </Link>
             </li>
@@ -57,8 +59,8 @@ const Menubar = () => {
               </span>
             </div></Link>
 
-            <button className="btn btn-outline-primary">Login</button>
-            <button className="btn btn-outline-success">Register</button>
+            <button className="btn btn-outline-primary" onClick={()=>navigate(`/login`)}>Login</button>
+            <button className="btn btn-outline-success" onClick={()=>navigate(`/register`)}>Register</button>
           </div>
         </div>
       </div>
