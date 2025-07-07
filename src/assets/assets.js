@@ -7,11 +7,13 @@ import cake from './cake.png';
 import icecream from './icecream.png';
 import salad from './salas.png';
 import rolls from './rolls.jpg';
+import avatar from './admin.jpg';
 
 
 export const assets = {
     logo,
-    cart
+    cart,
+    avatar
     
 };
 

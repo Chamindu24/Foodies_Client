@@ -6,9 +6,15 @@ import { StoreContext } from '../../context/StoreContex';
 
 const Menubar = () => {
   const [active, setActive] = useState('home');
-      const { quantity,token} = useContext(StoreContext);
+      const { quantity,token,setToken,setQuantity} = useContext(StoreContext);
       const uniqueItemsInCart = Object.values(quantity).filter(qty => qty > 0).length;
   const navigate = useNavigate();
+  const logout = () => {
+    localStorage.removeItem('token');
+    setToken("");
+    setQuantity({});
+    navigate('/');
+  };
   
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary shadow-sm">
@@ -60,13 +66,21 @@ const Menubar = () => {
             </div></Link>
 
             {
-              ! token? (
+              !token? (
                 <>
                   <button className="btn btn-outline-primary" onClick={()=>navigate(`/login`)}>Login</button>
                   <button className="btn btn-outline-success" onClick={()=>navigate(`/register`)}>Register</button>
                 </>
               ):(
-                <div></div>
+                <div className='dropdown text-end'>
+                    <a href="" className='d-block link-body-emphasis text-decoration-none dropdown-toggle'  data-bs-toggle='dropdown' aria-expanded='false'>
+                      <img src={assets.avatar} alt="Avatar" className='rounded-circle' height={32} width={32} />
+                    </a>
+                    <ul className='dropdown-menu text-small cursor-pointer'>
+                        <li className='dropdown-item' onClick={()=>navigate(`/myorders`)}>My Orders</li>
+                        <li className='dropdown-item' onClick={logout}>Logout</li>
+                    </ul>
+                </div>
               )
             }
           </div>
