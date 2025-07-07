@@ -7,6 +7,7 @@ export const StoreContextProvider = (props) => {
 
     const [foodList, setFoodList] = useState([]);
     const [quantity, setQuantity] = useState({});
+    const [token, setToken] = useState("");
 
     const increseQuantity = (id) => {
         setQuantity((prev) => ({
@@ -40,7 +41,9 @@ export const StoreContextProvider = (props) => {
         increseQuantity,
         decreseQuantity,
         quantity,
-        removeFromCart
+        removeFromCart,
+        token,
+        setToken
     };
 
     useEffect(() => {

@@ -6,7 +6,7 @@ import { StoreContext } from '../../context/StoreContex';
 
 const Menubar = () => {
   const [active, setActive] = useState('home');
-      const { quantity} = useContext(StoreContext);
+      const { quantity,token} = useContext(StoreContext);
       const uniqueItemsInCart = Object.values(quantity).filter(qty => qty > 0).length;
   const navigate = useNavigate();
   
@@ -59,8 +59,16 @@ const Menubar = () => {
               </span>
             </div></Link>
 
-            <button className="btn btn-outline-primary" onClick={()=>navigate(`/login`)}>Login</button>
-            <button className="btn btn-outline-success" onClick={()=>navigate(`/register`)}>Register</button>
+            {
+              ! token? (
+                <>
+                  <button className="btn btn-outline-primary" onClick={()=>navigate(`/login`)}>Login</button>
+                  <button className="btn btn-outline-success" onClick={()=>navigate(`/register`)}>Register</button>
+                </>
+              ):(
+                <div></div>
+              )
+            }
           </div>
         </div>
       </div>
