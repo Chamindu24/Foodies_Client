@@ -40,7 +40,7 @@ const MyOrders = () => {
                     <td>
                       {order.orderedItems.map((item, i) => (
                         <span key={i}>
-                          {item.name}X{item.quantity}
+                          {item.name} x {item.quantity}
                           {i !== order.orderedItems.length - 1 ? ', ' : ''}
                         </span>
                       ))}

@@ -1,1 +1,2 @@
  export const  RAZORPAY_KEY = "rzp_test_8b0d1c2f3e4a5b6c7d8e9f0g1h2i3j4k5l6m7n8o9p0q1r2s3t4u5v6w7x8y9z0";
+ export const STRIPE_PUBLISHABLE_KEY = "pk_test_51RifBUPHTh8oI8gN6xPVDEiLSiJEYu4mmY18uDQPHaIIwzhkqRH6GJY1AqmcQRtHUZsX5tuTfR6qaBnbaihRKFyq00gfGWaDyM"
