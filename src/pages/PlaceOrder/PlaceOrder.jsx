@@ -81,7 +81,7 @@ const CheckoutForm = ({ data, total, cardItems, quantity, onOrderComplete }) => 
           toast.error(result.error.message);
           await deleteOrder(response.data.id);
         } else {
-          console.log('Payment succeeded:', result.paymentIntent);
+          console.log('Payment succeeded:', result.paymentIntent)
           toast.success("Payment successful!");
           await verifyPayment(result.paymentIntent.id);
           await clearCart();
@@ -112,6 +112,7 @@ const CheckoutForm = ({ data, total, cardItems, quantity, onOrderComplete }) => 
 
   const verifyPayment = async (paymentIntentId) => {
     try {
+      console.log("Verifying payment with ID:", paymentIntentId);
       await axios.post('http://localhost:8081/api/orders/verify', {
         payment_intent_id: paymentIntentId
       }, {

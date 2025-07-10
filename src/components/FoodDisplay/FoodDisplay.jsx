@@ -4,12 +4,20 @@ import FoodItem from '../FoodItem/FoodItem';
 
 const FoodDisplay = ({category, searchText}) => {
   const { foodList } = useContext(StoreContext);
+
+  // Utility function to shuffle array
+  const shuffleArray = (array) => {
+    return [...array].sort(() => Math.random() - 0.5);
+  };
+
   const filteredFoodList = useMemo(() => {
-    return foodList.filter(food => {
+    const filtered = foodList.filter(food => {
       const matchesCategory = category === 'All' || food.category === category;
       const matchesSearch = food.name.toLowerCase().includes(searchText.toLowerCase());
       return matchesCategory && matchesSearch;
     });
+
+    return shuffleArray(filtered);
   }, [foodList, category, searchText]);
 
 
